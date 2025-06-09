@@ -1,7 +1,7 @@
 import React from 'react'
 import ShoeCard from '@/components/ShoeCard';
 import { mockShoes } from '@/lib/mockShoes';
-import { useSearchParams, useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 
 const SHOES_PER_PAGE = 4;
@@ -35,11 +35,24 @@ export default function ShopPage() {
             </div>
 
             { /* Pagination Controls */}
+            <div className="flex justify-center items-center gap-4">
+                <button 
+                onClick={()=> goToPage(currentPage-1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
+                    Previous
+                </button>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {mockShoes.map((shoe) => (
-                <ShoeCard key={shoe.id} shoe={shoe}/>
-            ))}
+                <span className="text-sm text-gray-700">
+                    Page {currentPage} of {totalPages}
+                </span>
+
+                <button onClick={()=> goToPage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className = "px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                >
+                    Next
+                </button>
             </div>
         </main>
     )
