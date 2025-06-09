@@ -10,7 +10,7 @@ type ShoeCardProps = {
 
 export default function ShoeCard({ shoe }: ShoeCardProps ) {
   return (
-    <Link href={'/shoes/${shoe.id}'}>
+    <Link href={`/shoes/${shoe.id}`}>
       <div className="bg-white shadow-md rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
         <div className="relative w-full h-64">
           <Image
